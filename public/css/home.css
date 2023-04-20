@@ -1,0 +1,314 @@
+/* .slider a, li a{
+    text-decoration: none;
+}
+
+.slider-2 {
+    width: 400px;
+    height: 400px;
+    border-radius: 400px;
+    margin: 100px auto;
+    overflow: hidden;
+    border: 4px solid #ffffff;
+    background-color: white;
+  }
+  .slider-2 .slider{
+    height: 100%;
+    animation: slider-2 20s infinite ease-in-out;
+   */
+    /* Pour inverser l'animation */
+    /* display: flex; 
+    flex-direction: column-reverse; */
+  /* }
+  .slider-2 p{
+    flex-shrink: 0;
+    padding: 72px 0;
+    width: 100%;
+    text-align: center;
+    font-size: 45px;
+    color: #2f56da;
+    
+  }
+  @keyframes slider-2 {
+    0%,
+    25% {
+      transform: translateY(0);
+    }
+    25%,
+    50% {
+      transform: translateY(-100%);
+    }
+    50%,
+    75% {
+      transform: translateY(-200%);
+    }
+    
+    100% {
+      transform: translateY(-300%); */
+    /* }
+    100% {
+      transform: translateY(-400%);
+    } */
+  /* }
+  } */
+
+  /* #carouselExampleCaptions{
+    width: 40%;
+    margin: auto;
+    }
+    
+    .carousel-item {
+        width: 100%;
+        height: auto;
+        position: relative;
+       
+    }
+    
+    
+    
+   .carousel-item a{
+        position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%,-50%);
+       opacity: 0;
+       font-size: 250%;
+       
+    }
+    
+  .carousel-item a:hover{
+        opacity: 1;
+        transition:4s ;
+    } */
+    #bloc{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+       gap: 100px;                  /*gap permet de mettre des espace entre mes elements flexbox*/
+    }
+    
+    #bloc section{
+        margin: 0 100px ;
+    }
+    
+    /**************************************************************************
+                                le bouton menu
+    *************************************************************************/
+        .conteneur-menu{
+          width: 300px;
+          height: 300px;
+          border-radius: 50%;
+          position: relative;
+          /* left: 40%; */
+         
+          background-color: rgb(255, 255, 255);          /*modifier color bg...*/
+      }
+      
+      
+      
+      /* mon bouton principal qui pulse */
+      
+      .bouton-menu{
+          display: block;
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          background-color:#2f56da;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          z-index: 20;
+          cursor: pointer;
+          box-shadow: 0 0 0 0 grey;
+          animation: pulse 1.3s infinite;                 /* pulse = nom        vitesse de 1.3s à l'infini*/
+      }
+      
+      @keyframes pulse {
+          to {                                                                   
+              box-shadow: 0 0 0 18px rgba(0, 0, 0, 0.01);             /* ajout  d'une ombre quasi transparent en mode onde s'étalant*/
+          }
+      }
+      
+      .selectionEspace{
+          text-align: center;
+          width: 40px;
+          height: 5px;
+          border-radius: 5px;
+          position: absolute;
+          top: 26%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+      }
+      
+      
+      /* petits ronds au centre des sous-boutons (à voir si je les garde ou pas) */
+      /* .icone{
+          width :40px;
+      } */
+      
+      
+      /*représente les sphères des sous-boutons*/
+      .boule{
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          background-color: rgb(21, 0, 71);
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+      
+      .boule a{
+          text-decoration: none;
+          
+      }
+      
+      
+      /* animation hover sur mes sous-boutons à mettre avec le js*/
+      
+      .sous-bouton{
+          animation: mouvement 60s infinite;              /*je dois m'entraîner sur les animations avec les transition...*/
+      }
+      
+      @keyframes mouvement {
+          0% {
+              transform: translateX(10px)
+          }
+          20% {
+              transform: translateX(-10px);
+          }
+          40% {
+              transform: translateX(10px);
+          }
+          60% {
+              transform: translateX(-10px);
+          }
+          80% {
+              transform: translateX(10px);
+          }
+          100% {
+              transform: translateX(0px);
+          }
+      } 
+      
+      .recruteur{
+          background-color: rgb(255, 255, 255);
+          transition: all 0.5s 0.2s ease-in-out;
+      }
+      .candidat{
+          background-color: rgb(255, 255, 255);
+          transition: all 0.5s 0.4s ease-in-out;
+      }
+      .annonce{
+          background-color:rgb(255, 255, 255); 
+          transition: all 0.5s 0.6s ease-in-out;
+      }
+      
+      
+      /*animation sous menus*/
+      
+      .conteneur-menu.active .recruteur{
+          left: 100%;
+         
+      }
+      
+      .conteneur-menu.active .candidat{
+          top: 100%;
+          
+      }
+      
+      .conteneur-menu.active .annonce{
+          left: 50%;
+          top: 0;
+         
+      }
+      
+      
+      /* .apparation{
+          width: 100px;
+          height: 100px;
+      }
+      
+      .disparation{
+          width: 50px;
+          height: 50px;
+      } */
+    
+    
+    
+      /**************************************************************************
+                        section des differents metiers
+    *****************************************************************************/
+    
+    #presentationMetier{
+        display: flex;
+        /*justify-content: space-around;  */
+        /* width: 70%; */
+        /* margin: auto; */                    /*margin:autopour centrer mon element . PS : width doit être utiliser
+         /* border-radius: 20%; */
+         flex-direction: column;
+         align-items: center;
+         gap: 50px;
+    }
+    
+    #presentationMetier h2 + p{
+        text-align: justify;
+    }
+    
+    #presentationMetier .metierDuSocial{
+        display: flex;
+    }
+    
+    aside{
+        text-align: center;
+      }
+      iframe{
+          
+          border-radius: 10%;
+      } 
+    
+    article a{
+        color: black;
+        text-decoration: none;
+    }
+    article a:hover{
+        color: white;
+    }
+
+    .about p img {
+        width: 5rem;
+    }
+    
+    /* 
+    
+    article{
+        padding-bottom: 1em;
+    }
+    article li{
+        list-style-type: none;
+        padding: 0.5em;
+    }
+    article a{
+        color: black;
+    }
+    article a:hover{
+        color: white;
+    }
+    
+    h3{
+        text-align: center;
+    }
+    aside{
+      text-align: center;
+    }
+    iframe{
+        
+        border-radius: 10%;
+    } */
+
+    
+    

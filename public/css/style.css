@@ -1,0 +1,154 @@
+*{
+    
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container{
+    display: flex;
+    flex-direction: column;
+  }
+  
+
+
+header {
+    background-color: #5d686d;
+    ;
+
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+}
+
+#navbar ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+#navbar li {
+    margin-right: 10%;
+}
+
+
+.logo img {
+    width: 8rem;
+
+}
+
+.barreMenu {
+    display: none;
+}
+
+.dropdown {
+    display: none;
+}
+
+.menu .menuLiens ul {
+    display: flex;
+    justify-content: center;
+    background-color: #5e7e8d;
+}
+
+.menu .menuLiens li {
+    margin: 0 60px;
+}
+
+main {
+    background: radial-gradient(ellipse, #2f56da, white);
+    
+}
+
+/* .conteneur {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 50px;
+  }
+  
+  .slider img {
+    max-width: 100%;
+    display: none;
+  }
+  img.active {
+    display: block;
+    animation: fade 0.8s;
+  }
+  @keyframes fade {                                                 css du slide menu
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .cont-btn {
+    width: 100%;
+    height: auto;
+    border: 1px solid #000;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+  }
+  .btn-nav {
+    font-size: 50px;
+    margin: 0 15px;
+    cursor: pointer;
+  } */
+
+
+
+footer {
+    background-color: #5d686d;
+    text-align: center;
+   
+}
+
+footer i {
+    padding: 2rem;
+    color: white;
+}
+
+
+
+@media all and (max-width: 950px) {                                     /*media queries*/
+
+    .menu {
+        margin: 0;
+    }
+
+    .dropdown {
+        display: block;
+        text-align: right;
+    }
+
+    .menu {
+        display: none;
+    }
+
+
+    .barre {
+        display: none;
+    }
+
+    .login li:first-child  {                                /*efface le premier li "compte*/
+        display: none;
+    }
+
+    .login a i {
+        color: rgb(255, 255, 255);
+        display: flex;
+    }
+
+    .panier li:first-child  {
+        display: none;
+    }
+
+
+}

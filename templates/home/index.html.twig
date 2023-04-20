@@ -2,6 +2,10 @@
 
 {% block title %}Hello HomeController!{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    {% endblock %}
+
 {% block body %}
 
 <div id="bloc">
@@ -79,25 +83,24 @@
 
 
 <section>
-    <article>
+    <article class="about">
 <h1>A propos de nous</h1>
         <p>
-            Lancé en mars 2022 par un passionnée du web et des problématiques RH du métier du social, ("nom""du
-            site".fr) est un site de recrutement en ligne spécialisé dans les métiers du médico -social.
-            ("nom du site".fr) a pour objectif de favoriser la mise en relation de talents des acteurs du médico-social
+            Lancé en mars 2022 par un passionnée du web et des problématiques RH du métier du social, <img src="{{ asset('media/logo.png') }}" alt="logo"></span> est un site de recrutement en ligne spécialisé dans les métiers du médico -social.
+            <img src="{{ asset('media/logo.png') }}" alt="logo"> a pour objectif de favoriser la mise en relation de talents des acteurs du médico-social
             et de recruteurs grâce à des solutions performantes et efficaces. Développé en interne,
-            indépendant et fidèle la vision de son fondateur, ("nom du du site".fr).fr se veut avant tout humain et
+            indépendant et fidèle la vision de son fondateur, <img src="{{ asset('media/logo.png') }}" alt="logo">.fr se veut avant tout humain et
             proche de ses membres.
             Vous souhaitez recruter un profil éducateur spécialisé, assistant social, auxiliaire de vie, Directeur
-            d'établissement, etc.? Contactez-nous, E-works.fr offre une audience ciblée, de qualité et vous apportera
+            d'établissement, etc.? Contactez-nous, <img src="{{ asset('media/logo.png') }}" alt="logo"> offre une audience ciblée, de qualité et vous apportera
             une réponse sur-mesure.
-            Vous souhaitez faire évoluer votre carrière? ("nom du site".fr) vous propose un large choix d'offres de
+            Vous souhaitez faire évoluer votre carrière? <img src="{{ asset('media/logo.png') }}" alt="logo"> vous propose un large choix d'offres de
             formules de recrutement, consultez et postez les offres, conseils et solutions de e-visibilité.
-            Vous souhaitez devenir partenaire ("nom du site".fr) ? Contactez-nous, notre équipe marketing vous répondra
+            Vous souhaitez devenir partenaire <img src="{{ asset('media/logo.png') }}" alt="logo"> ? Contactez-nous, notre équipe marketing vous répondra
             dans les plus brefs délais.
         </p>
         <p>
-            Merci à tous les membres ("nom du site".fr) pour votre fidélité et confiance!
+            Merci à tous les membres <img src="{{ asset('media/logo.png') }}" alt="logo"> pour votre fidélité et confiance!
         </p>
 
         <p>
