@@ -10,7 +10,9 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -18,21 +20,24 @@ class RegistrationFormType extends AbstractType
     {
         $builder
            
-            // ->add('roles', ChoiceType::class, [
-            //     'choices' => [
-            //         'Recruteur' => 'ROLE_USER_RECRUTEUR',
-            //         'Candidat' => 'ROLE_USER'
-            //     ],
-            //     'expanded' => true,
-            //     'multiple' => true,
-            //     'label' => 'Rôle'
+            ->add('roles', ChoiceType::class, [
+                'label' => "Choisissez votre espace :",         //ne fonctionne pas
+                'choices' => [
+                    'Recruteur' => 'ROLE_USER_RECRUTEUR',
+                    'Candidat' => 'ROLE_USER_CANDIDAT'
+                ],
+                'expanded' => true,
+                'multiple' => true,
+                'label' => 'Rôle'
 
-            // ]) 
-            ->add('name')
-            ->add('firstName')
-            ->add('company')
-            ->add('phone')
-            ->add('email')
+            ]) 
+            ->add('name', TextType::class)
+            ->add('first_name', TextType::class)
+            ->add('company', TextType::class, [
+                'required'=>false])
+            ->add('phone', TextType::class, [
+                'required'=>false])
+            ->add('email', EmailType::class)
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
@@ -40,7 +45,7 @@ class RegistrationFormType extends AbstractType
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
                     new Regex('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{14,}$/',
-                    "Doit contenir au minimum 14 caractères, dont 1 majuscule, 1 minuscule, 1 chiffre & 1 caractère spécial (@$!%*?&)")
+                    "Doit contenir au minimum 14 caractères, dont 1 majuscule, 1 minuscule, 1 chiffre & 1 caractère spécial (@$!%*?&)")  //je ne vois pas le message
                 ],
             ])
             ->add('agreeTerms', CheckboxType::class, [

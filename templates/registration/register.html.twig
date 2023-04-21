@@ -9,13 +9,79 @@
 
     <h1>Register</h1>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+   <div class="container-fluid ">
+    <!-- centrer bloc et travail sur ça taille widht -->
+    <div class="mx-auto p-1" style="width: 300px;">
+        <!-- centrer element -->
+        <div class="text-center">
+            <!-- backg color   opacity     border        color border           px bordure et raduis -->
+            <div class="bg-warning-subtle bg-opacity-10 border border-light-subtle border-start-0 rounded-5">
+            
+                    {{ form_start(registrationForm) }}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+                    {# {{ form_label(registrationForm.roles) }}        <!--  nom --> #}
+                    <br>
+                    {{ form_widget(registrationForm.roles) }}        <!--champs-->
+
+                    <br>
+                    <br>
+
+                    {{ form_label(registrationForm.name) }}       
+                    <br>
+                    {{ form_widget(registrationForm.name) }}        
+
+                    <br>
+                    <br>
+
+                    {{ form_label(registrationForm.first_name) }}
+                    <br>
+                    {{ form_widget(registrationForm.first_name) }}
+
+                    <br>
+                    <br>
+
+                    {{ form_label(registrationForm.company) }}
+                    <br>
+                    {{ form_widget(registrationForm.company) }}
+
+                    <br>
+                    <br>
+
+                    {{ form_label(registrationForm.email) }}
+                    <br>
+                    {{ form_widget(registrationForm.email) }}
+
+                    <br>
+                    <br>
+
+                    {{ form_label(registrationForm.phone) }}
+                    <br>
+                    {{ form_widget(registrationForm.phone) }}
+
+                    <br>
+                    <br>
+
+                    {{ form_label(registrationForm.plainPassword) }}
+                    <br>
+                    {{ form_widget(registrationForm.plainPassword) }}
+
+                    <br>
+                    <br>
+
+                    {{ form_widget(registrationForm.agreeTerms) }}
+                    <br>
+                    {{ form_label(registrationForm.agreeTerms) }}
+
+                    <br>
+                    <br>
+
+
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+
+
+                    {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
