@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+// #[IsGranted("ROLE_USER_RECRUTEUR")]
 class PresentationMetiersExpertiseController extends AbstractController
 {
     #[Route('/presentation/metiers/expertise', name: 'app_presentation_metiers_expertise')]

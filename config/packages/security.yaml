@@ -34,6 +34,16 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+          - { path: ^/admin, roles: ROLE_ADMIN }
+          - { path: ^/recruteur, roles: ROLE_USER_RECRUTEUR }
+          - { path: ^/profile, roles: ROLE_USER }                       #voir si ce path est réellement utile
+          - { path: ^/candidat, roles: ROLE_USER_CANDIDAT }
+
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_USER_RECRUTEUR, ROLE_USER_CANDIDAT]
+        ROLE_USER_RECRUTEUR: ROLE_USER
+        ROLE_USER_CANDIDAT: ROLE_USER
+        
 
 when@test:
     security:
