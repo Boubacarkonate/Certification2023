@@ -20,8 +20,8 @@ class EmailService {
         $message){
 
         $email = (new Email())
-        ->from($email)
-        ->to($email)
+        ->from($email)          
+        ->to($email)  //->to(admin@gmail.com)    le user envoie un mail à l'admin
         //->cc('cc@example.com')
         //->bcc('bcc@example.com')
         //->replyTo('fabien@example.com')
