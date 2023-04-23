@@ -47,18 +47,20 @@
                     </li>
                     <li>
                         <div class="login">
-                           <a href=" {{ path('app_login') }}"> 
+                           
                             <ul>
-                            {% if is_granted('ROLE_USER')==false %}
-                                <li>connexion</li>
-                                {% endif %}
-                                
+                                {% if is_granted('ROLE_USER')==false %}
+                                 
+                                <li><a href=" {{ path('app_login') }}">connexion</li>
+                                <li><i class="fa-solid fa-user"></i> </a></li>
+                               
+                                {% endif %} 
                                 {% if is_granted('ROLE_USER') %}
-                                <li>déconnexion</li>
-                                 {% endif %} 
-                                <li><i class="fa-solid fa-user"></i></li>
+                                <li><a href=" {{ path('app_logout') }}">déconnexion</li>
+                                <li><i class="fa-solid fa-user"></i></a></li>
+                                {% endif %} 
                             </ul>
-                            </a>
+                            
                         </div>
                     </li>
                     <li>
