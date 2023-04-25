@@ -36,7 +36,7 @@ security:
         # - { path: ^/profile, roles: ROLE_USER }
           - { path: ^/admin, roles: ROLE_ADMIN }
           - { path: ^/recruteur, roles: ROLE_USER_RECRUTEUR }
-          - { path: ^/profile, roles: ROLE_USER }                       #voir si ce path est réellement utile
+        #   - { path: ^/profile, roles: ROLE_USER }                       #voir si ce path est réellement utile
           - { path: ^/candidat, roles: ROLE_USER_CANDIDAT }
 
     role_hierarchy:

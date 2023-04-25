@@ -31,7 +31,6 @@ class UserType extends AbstractType
             ->add('first_name')
             ->add('company')
             ->add('phone')
-            ->add('file')
         ;
     }
 

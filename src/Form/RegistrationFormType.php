@@ -23,7 +23,7 @@ class RegistrationFormType extends AbstractType
         $builder
            
             ->add('roles', ChoiceType::class, [
-                'label' => "Choisissez votre espace :",         //ne fonctionne pas
+               'label' => "Choisissez votre espace :",         //  ne fonctionne pas
                 'choices' => [
                     'Recruteur' => 'ROLE_USER_RECRUTEUR',
                     'Candidat' => 'ROLE_USER_CANDIDAT'
@@ -39,30 +39,30 @@ class RegistrationFormType extends AbstractType
                 'required'=>false])
             ->add('phone', TextType::class, [
                 'required'=>false])
-            ->add('file', FileType::class, [
-                    'label' => 'Télécharger votre PDF',
+            // ->add('file', FileType::class, [
+            //         'label' => 'Télécharger votre PDF',
     
-                    // unmapped means that this field is not associated to any entity property
-                    'mapped' => true,
+            //         // unmapped means that this field is not associated to any entity property
+            //         'mapped' => true,
     
-                    // make it optional so you don't have to re-upload the PDF file
-                    // every time you edit the Product details
-                    'required' => true,
+            //         // make it optional so you don't have to re-upload the PDF file
+            //         // every time you edit the Product details
+            //         'required' => true,
     
                     // unmapped fields can't define their validation using annotations
                     // in the associated entity, so you can use the PHP constraint classes
-                    'constraints' => [
-                        new File([
-                            'maxSize' => '1024k',
-                            'mimeTypes' => [
-                                'application/pdf',
-                                'application/x-pdf',
-                                                                              //telecharger doc pdf
-                            ],
-                            'mimeTypesMessage' => 'Please upload a valid PDF document',
-                        ])
-                    ],
-                ])
+                    // 'constraints' => [
+                    //     new File([
+                    //         'maxSize' => '1024k',
+                    //         'mimeTypes' => [
+                    //             'application/pdf',
+                    //             'application/x-pdf',
+                    //                                                           //telecharger doc pdf
+                    //         ],
+                    //         'mimeTypesMessage' => 'Please upload a valid PDF document',
+                    //     ])
+                    // ],
+                // ])
             ->add('email', EmailType::class)
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,

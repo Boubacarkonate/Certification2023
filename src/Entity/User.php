@@ -45,9 +45,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $phone = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $file = null;
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Candidat $candidat = null;
 
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -197,17 +198,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getFile(): ?string
+    public function getCandidat(): ?Candidat
     {
-        return $this->file;
+        return $this->candidat;
     }
 
-    public function setFile(string $file): self
+    public function setCandidat(?Candidat $candidat): self
     {
-        $this->file = $file;
+        // unset the owning side of the relation if necessary
+        if ($candidat === null && $this->candidat !== null) {
+            $this->candidat->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($candidat !== null && $candidat->getUser() !== $this) {
+            $candidat->setUser($this);
+        }
+
+        $this->candidat = $candidat;
 
         return $this;
     }
 
- 
+    public function __toString()
+    {
+        return $this->first_name;               //peut etre changé firts_name, name, email = string, non null
+    }
+   
 }
