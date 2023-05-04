@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategorieController!{% endblock %}
+
+{% block body %}
+ <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>CV</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cvParCategorie in cv_categorie %}
+            <tr>
+                <td>{{ cvParCategorie.id }}</td>
+                <td>{{ cvParCategorie.cv_candidat }}</td>
+                <td>
+                    <a href="{{ path('app_admin_categorie_show', {'id': cvParCategorie.id}) }}">Voir CV</a>       {# pour voir info de la personne #}
+                  {# <a href="{{ asset('uploads/curriculumVitae/' ~ cvParCategorie.cv_candidat) }}">Voir cv<a/>      a travailler pour lire le cv telechargé en pdf #}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

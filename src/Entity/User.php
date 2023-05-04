@@ -46,8 +46,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $phone = null;
 
     #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
-    private ?Candidat $candidat = null;
+    private ?Cv $cv = null;
 
+   
+
+   
     
     public function getId(): ?int
     {
@@ -198,31 +201,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getCandidat(): ?Candidat
+
+    public function getCv(): ?Cv
     {
-        return $this->candidat;
+        return $this->cv;
     }
 
-    public function setCandidat(?Candidat $candidat): self
+    public function setCv(?Cv $cv): self
     {
         // unset the owning side of the relation if necessary
-        if ($candidat === null && $this->candidat !== null) {
-            $this->candidat->setUser(null);
+        if ($cv === null && $this->cv !== null) {
+            $this->cv->setUser(null);
         }
 
         // set the owning side of the relation if necessary
-        if ($candidat !== null && $candidat->getUser() !== $this) {
-            $candidat->setUser($this);
+        if ($cv !== null && $cv->getUser() !== $this) {
+            $cv->setUser($this);
         }
 
-        $this->candidat = $candidat;
+        $this->cv = $cv;
 
         return $this;
     }
 
+    
     public function __toString()
     {
-        return $this->first_name;               //peut etre changé firts_name, name, email = string, non null
+        return "$this->Name $this->first_name";            //peut etre changé firts_name, name, email = string, non null
     }
-   
+
+    
 }

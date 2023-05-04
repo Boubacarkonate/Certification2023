@@ -18,12 +18,12 @@ class Categorie
     #[ORM\Column(length: 255)]
     private ?string $sector = null;
 
-    #[ORM\OneToMany(mappedBy: 'categories', targetEntity: Candidat::class)]
-    private Collection $candidats;
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Cv::class)]
+    private Collection $cvs;
 
     public function __construct()
     {
-        $this->candidats = new ArrayCollection();
+        $this->cvs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -44,29 +44,29 @@ class Categorie
     }
 
     /**
-     * @return Collection<int, Candidat>
+     * @return Collection<int, Cv>
      */
-    public function getCandidats(): Collection
+    public function getCvs(): Collection
     {
-        return $this->candidats;
+        return $this->cvs;
     }
 
-    public function addCandidat(Candidat $candidat): self
+    public function addCv(Cv $cv): self
     {
-        if (!$this->candidats->contains($candidat)) {
-            $this->candidats->add($candidat);
-            $candidat->setCategories($this);
+        if (!$this->cvs->contains($cv)) {
+            $this->cvs->add($cv);
+            $cv->setCategorie($this);
         }
 
         return $this;
     }
 
-    public function removeCandidat(Candidat $candidat): self
+    public function removeCv(Cv $cv): self
     {
-        if ($this->candidats->removeElement($candidat)) {
+        if ($this->cvs->removeElement($cv)) {
             // set the owning side to null (unless already changed)
-            if ($candidat->getCategories() === $this) {
-                $candidat->setCategories(null);
+            if ($cv->getCategorie() === $this) {
+                $cv->setCategorie(null);
             }
         }
 
@@ -75,6 +75,6 @@ class Categorie
 
     public function __toString()
     {
-        return $this->sector;
+        return $this->sector;            //peut etre changé firts_name, name, email = string, non null
     }
 }

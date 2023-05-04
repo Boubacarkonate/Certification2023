@@ -5,5 +5,26 @@
 {% block body %}
 Contact
 
-{{ form(form) }}
+ {{ form_start(form) }}
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name) }}
+          <br>
+          <br>
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email) }}
+          <br>
+          <br>
+        {{ form_label(form.services) }}
+        {{ form_widget(form.services) }}
+          <br>
+          <br>
+        {{ form_label(form.message) }}
+        {{ form_widget(form.message) }}
+          <br>
+          <br>
+       
+        {# <button class="btn">{{ button_label|default('Save') }}</button> #}
+    {{ form_end(form) }}
+
+{# {{ form(form) }} #}
 {% endblock %}

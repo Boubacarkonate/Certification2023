@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+    <h1>User index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>Email</th>
+                {# <th>Roles</th>
+                <th>Password</th>
+                <th>IsVerified</th> #}
+                <th>Name</th>
+                <th>First_name</th>
+                {% if is_granted('ROLE_USER_RECRUTEUR')%}  
+                    <th>Company</th>
+                {% endif %}
+                <th>Phone</th>
+                <th>curriculum vitae</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+      
+            <tr>
+                {# <td>{{ user.id }}</td> #}
+                <td>{{ user.email }}</td>
+                {# <td>{{ user.roles ? user.roles|json_encode : '' }}</td>         voir si je laisse le role affiché ou non. Sinon, je peux modifier les noms #}
+                {# <td>{{ user.password }}</td>
+                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td> #}
+                <td>{{ user.Name }}</td>
+                <td>{{ user.firstName }}</td>
+                {% if is_granted('ROLE_USER_RECRUTEUR')%}
+                    <td>{{ user.company }}</td>
+                 {% endif %}
+                <td>{{ user.phone }}</td>
+                <td><a href="{{ asset('uploads/curriculumVitae/' ~ user.cv ) }}">cv <a/></td>
+                
+                <td>{{ user.cv.categorie }}</td>
+                <td>
+                   
+                    <a href="{{ path('app_profile_edit', {'id': user.id}) }}">edit Profile</a>
+                </td>
+            </tr>
+      {# <a href="{{ path('app_profile_cv_new', {'id': user.id}) }}">edit cv</a>   a travailler avec la bon chemin de telechargement #}
+        </tbody>
+    </table>
+
+   
+
+    
+{% endblock %}

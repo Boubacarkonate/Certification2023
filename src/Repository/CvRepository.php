@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Candidat;
+use App\Entity\Cv;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Candidat>
+ * @extends ServiceEntityRepository<Cv>
  *
- * @method Candidat|null find($id, $lockMode = null, $lockVersion = null)
- * @method Candidat|null findOneBy(array $criteria, array $orderBy = null)
- * @method Candidat[]    findAll()
- * @method Candidat[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Cv|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Cv|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Cv[]    findAll()
+ * @method Cv[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CandidatRepository extends ServiceEntityRepository
+class CvRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Candidat::class);
+        parent::__construct($registry, Cv::class);
     }
 
-    public function save(Candidat $entity, bool $flush = false): void
+    public function save(Cv $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class CandidatRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Candidat $entity, bool $flush = false): void
+    public function remove(Cv $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class CandidatRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Candidat[] Returns an array of Candidat objects
+//     * @return Cv[] Returns an array of Cv objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class CandidatRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Candidat
+//    public function findOneBySomeField($value): ?Cv
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')

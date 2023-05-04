@@ -3,12 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Categorie;
+
 use App\Form\CategorieType;
 use App\Repository\CategorieRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/admin/categorie')]
 class AdminCategorieController extends AbstractController
@@ -51,7 +52,7 @@ class AdminCategorieController extends AbstractController
     #[Route('/{id}/edit', name: 'app_admin_categorie_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Categorie $categorie, CategorieRepository $categorieRepository): Response
     {
-        $form = $this->createForm(CategorieType::class, $categorie);
+        $form = $this->createForm(Categorie1Type::class, $categorie);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

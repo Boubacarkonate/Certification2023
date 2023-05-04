@@ -17,7 +17,6 @@
                 <th>First_name</th>
                 <th>Company</th>
                 <th>Phone</th>
-                {# <th>File</th> #}
                 <th>actions</th>
             </tr>
         </thead>
@@ -33,7 +32,6 @@
                 <td>{{ user.firstName }}</td>
                 <td>{{ user.company }}</td>
                 <td>{{ user.phone }}</td>
-                {# <td>{{ user.file }}</td> #}
                 <td>
                     <a href="{{ path('app_admin_user_show', {'id': user.id}) }}">show</a>
                     <a href="{{ path('app_admin_user_edit', {'id': user.id}) }}">edit</a>
@@ -41,7 +39,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="11">no records found</td>
+                <td colspan="10">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

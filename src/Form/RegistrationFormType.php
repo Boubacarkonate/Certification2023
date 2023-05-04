@@ -26,7 +26,8 @@ class RegistrationFormType extends AbstractType
                'label' => "Choisissez votre espace :",         //  ne fonctionne pas
                 'choices' => [
                     'Recruteur' => 'ROLE_USER_RECRUTEUR',
-                    'Candidat' => 'ROLE_USER_CANDIDAT'
+                    'Candidat' => 'ROLE_USER_CANDIDAT',
+                    'Admin' => 'ROLE_ADMIN'
                 ],
                 'expanded' => true,
                 'multiple' => true,
@@ -69,10 +70,10 @@ class RegistrationFormType extends AbstractType
                 // this is read and encoded in the controller
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
-                'constraints' => [
-                    new Regex('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{14,}$/',
-                    "Doit contenir au minimum 14 caractères, dont 1 majuscule, 1 minuscule, 1 chiffre & 1 caractère spécial (@$!%*?&)")  //je ne vois pas le message
-                ],
+                // 'constraints' => [
+                //     new Regex('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{14,}$/',
+                //     "Doit contenir au minimum 14 caractères, dont 1 majuscule, 1 minuscule, 1 chiffre & 1 caractère spécial (@$!%*?&)")  //je ne vois pas le message
+                // ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,

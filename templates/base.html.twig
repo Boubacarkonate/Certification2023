@@ -64,11 +64,16 @@
                                     <a href=" {{ path('app_logout') }}">déconnexion</li>
                                 <li><i class="fa-solid fa-user"></i></a></li>
                                 {% endif %} 
+
+                                 <li> {% if is_granted('ROLE_USER')==true %}
+                                <a href=" {{ path('app_profile_index') }}">profil</a>            {# a bien placer en css#}
+                                {% endif %} 
+                                </li>
                             </ul>
                             
                         </div>
                     </li>
-                    <li>
+                    <li> {% if is_granted('ROLE_USER_RECRUTEUR')%}                      {# peut-être à enlever #}
                         <div class="panier"><a href="#">
                             <ul>
                                 <li> panier</li>
@@ -76,6 +81,7 @@
                             </ul>
                             </a>
                         </div>
+                        {% endif %}
                     </li>
                 </ul>
 
