@@ -3,7 +3,33 @@
 {% block title %}Hello CategorieController!{% endblock %}
 
 {% block body %}
- <table class="table">
+
+{% for nomCategorie in cv_categorie %}
+
+<h1>{{ nomCategorie.categorie }}</h1>
+
+{% endfor %}
+
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+   {% for cvParCategorie in cv_categorie %}
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ asset('media/cvModel.png') }}" class="card-img-top" alt="photo cv">
+            <div class="card-body">
+                <h5 class="card-title"> Profession du candidat{{ cvParCategorie.id }}</h5>  {#l'id sera enlevé #}
+                <p class="card-text">Catégorie : {{ cvParCategorie.categorie }}</p>
+                <a href="{{ asset('uploads/curriculumVitae/' ~ cvParCategorie.cvCandidat ) }}" class="btn btn-primary">Voir Cv</a>
+            </div>
+        </div> 
+    </div>
+    {% endfor %}
+</div>
+
+<a href="{{ path('app_categorie_index') }}">back to list</a>
+
+ {# <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -15,10 +41,10 @@
         {% for cvParCategorie in cv_categorie %}
             <tr>
                 <td>{{ cvParCategorie.id }}</td>
-                <td>{{ cvParCategorie.cv_candidat }}</td>
+                <td>{{ cvParCategorie.cvCandidat }}</td>
                 <td>
-                    <a href="{{ path('app_admin_categorie_show', {'id': cvParCategorie.id}) }}">Voir CV</a>       {# pour voir info de la personne #}
-                  {# <a href="{{ asset('uploads/curriculumVitae/' ~ cvParCategorie.cv_candidat) }}">Voir cv<a/>      a travailler pour lire le cv telechargé en pdf #}
+                    <a href="{{ path('app_admin_categorie_show', {'id': cvParCategorie.id}) }}">Voir CV</a>       pour voir info de la personne
+                  <a href="{{ asset('uploads/curriculumVitae/' ~ cvParCategorie.cv_candidat) }}">Voir cv<a/>      a travailler pour lire le cv telechargé en pdf
                 </td>
             </tr>
         {% else %}
@@ -27,7 +53,7 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+    </table> #}
 
 
 {% endblock %}

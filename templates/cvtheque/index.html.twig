@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CvthequeController!{% endblock %}
+
+{% block body %}
+<h1>Cvtheque</h1>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for cv in cvs %}
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ asset('media/cvModel.png') }}" class="card-img-top" alt="photo cv">
+            <div class="card-body">
+                <h5 class="card-title"> Profession du candidat{{ cv.id }}</h5>  {#l'id sera enlevé #}
+                <p class="card-text">Catégorie : {{ cv.categorie }}</p>
+                <a href="{{ asset('uploads/curriculumVitae/' ~ cv.cvCandidat ) }}" class="btn btn-primary">Voir Cv</a>
+            </div>
+        </div> 
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+ {#
+        <div class="card" style="width: 10rem">
+            <a href="{{ asset('uploads/curriculumVitae/' ~ cv.first_name) }}" class="card-img-top" alt="...">cv<a/>
+            
+            <div class="card-body">
+                <h5 class="card-title">{{ cv.nom }}</h5>
+                <p class="card-text">{{ cv.name }}</p>
+                <a href="{{ path('app_cv_show', { id: cv.id }) }}" class="btn btn-primary">show</a>
+                <a href="{{ path('app_cv_edit', { id: cv.id }) }}" class="btn btn-primary">edit</a>
+            </div>
+       
+    </div> #}

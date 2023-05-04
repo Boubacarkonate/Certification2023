@@ -3,9 +3,22 @@
 {% block title %}Categorie index{% endblock %}
 
 {% block body %}
-    <h1>Categorie index</h1>
+    <h1>Categorie index</h1> 
 
-    <table class="table">
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for categorie in categories %}
+    <div class="col">
+        <div class="card text-center mb-3" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ categorie.sector }}</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="{{ path('app_detail_categorie', {'id': categorie.id}) }}" class="btn btn-primary">Voir Cv</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+    {# <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -14,7 +27,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for categorie in categories %}
+       
             <tr>
                 <td>{{ categorie.id }}</td>
                 <td>{{ categorie.sector }}</td>
@@ -31,5 +44,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_categorie_new') }}">Create new</a>
+    <a href="{{ path('app_admin_categorie_new') }}">Create new</a> #}
 {% endblock %}
