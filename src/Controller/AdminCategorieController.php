@@ -49,7 +49,7 @@ class AdminCategorieController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_admin_categorie_edit', methods: ['GET', 'POST'])]
+    #[Route('/edit/{id}', name: 'app_admin_categorie_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Categorie $categorie, CategorieRepository $categorieRepository): Response
     {
         $form = $this->createForm(CategorieType::class, $categorie);

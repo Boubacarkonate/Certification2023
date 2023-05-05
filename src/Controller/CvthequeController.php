@@ -19,7 +19,7 @@ class CvthequeController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_admin_cv_show', methods: ['GET'])]
+    #[Route('/show/{id}', name: 'app_admin_cv_show', methods: ['GET'])]
     public function show(Cv $cv): Response
     {
         return $this->render('admin_cv/show.html.twig', [

@@ -22,7 +22,7 @@ class CategorieController extends AbstractController
         ]);
     }
     
-    #[Route('/{id}', name: 'app_detail_categorie')]
+    #[Route('/detailcategorie/{id}', name: 'app_detail_categorie')]
     public function show(CvRepository $cvRepository, Categorie $categorie): Response
     {
         $cv_categorie=$cvRepository->findBy([                      //pour voir cv par categorie (video loom crud personnalisé du 21/03 a 18h58)

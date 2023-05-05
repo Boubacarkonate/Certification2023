@@ -52,7 +52,7 @@ class AdminCvController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_admin_cv_show', methods: ['GET'])]
+    #[Route('/show/{id}', name: 'app_admin_cv_show', methods: ['GET'])]
     public function show(Cv $cv): Response
     {
         return $this->render('admin_cv/show.html.twig', [
@@ -60,7 +60,7 @@ class AdminCvController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_admin_cv_edit', methods: ['GET', 'POST'])]
+    #[Route('/edit/{id}', name: 'app_admin_cv_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Cv $cv, CvRepository $cvRepository): Response
     {
         $form = $this->createForm(CvType::class, $cv);
@@ -78,7 +78,7 @@ class AdminCvController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_admin_cv_delete', methods: ['POST'])]
+    #[Route('/delete/{id}', name: 'app_admin_cv_delete', methods: ['POST'])]
     public function delete(Request $request, Cv $cv, CvRepository $cvRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$cv->getId(), $request->request->get('_token'))) {

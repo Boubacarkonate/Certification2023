@@ -56,10 +56,10 @@ class ProfileController extends AbstractController
 
             $cvRepository->save($cv, true);
 
-            return $this->redirectToRoute('app_admin_cv_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_cv_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_cv/new.html.twig', [
+        return $this->renderForm('cv/new.html.twig', [
             'cv' => $cv,
             'form' => $form,
         ]);
@@ -92,7 +92,7 @@ class ProfileController extends AbstractController
     //     ]);
     // }
 
-    #[Route('/{id}/edit', name: 'app_profile_edit', methods: ['GET', 'POST'])]
+    #[Route('/edit/{id}', name: 'app_profile_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, UserRepository $userRepository): Response
     {
         $form = $this->createForm(UserProfileType::class, $user);
@@ -110,7 +110,7 @@ class ProfileController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_profile_delete', methods: ['POST'])]
+    #[Route('/delete/{id}', name: 'app_profile_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, UserRepository $userRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
@@ -119,4 +119,4 @@ class ProfileController extends AbstractController
 
         return $this->redirectToRoute('app_profile_index', [], Response::HTTP_SEE_OTHER);
     }
-}
+ }
