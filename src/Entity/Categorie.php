@@ -21,11 +21,8 @@ class Categorie
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Cv::class)]
     private Collection $cvs;
 
-    public function __construct()
-    {
-        $this->cvs = new ArrayCollection();
-    }
-
+  
+ 
     public function getId(): ?int
     {
         return $this->id;
@@ -77,4 +74,7 @@ class Categorie
     {
         return $this->sector;            //peut etre changé firts_name, name, email = string, non null
     }
+
+
+  
 }

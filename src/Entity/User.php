@@ -48,10 +48,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
     private ?Cv $cv = null;
 
-   
+    #[ORM\ManyToOne(inversedBy: 'user')]
+    private ?Forfait $forfait = null;
+
 
    
-    
     public function getId(): ?int
     {
         return $this->id;
@@ -230,5 +231,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return "$this->Name $this->first_name";            //peut etre changé firts_name, name, email = string, non null
     }
 
-    
+    public function getForfait(): ?Forfait
+    {
+        return $this->forfait;
+    }
+
+    public function setForfait(?Forfait $forfait): self
+    {
+        $this->forfait = $forfait;
+
+        return $this;
+    }
+
+
+  
 }

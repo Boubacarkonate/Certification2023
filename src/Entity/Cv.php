@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CvRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CvRepository::class)]
@@ -21,6 +23,16 @@ class Cv
 
     #[ORM\Column(length: 255)]
     private ?string $cv_candidat = null;
+
+    #[ORM\ManyToMany(targetEntity: Forfait::class, inversedBy: 'cvs')]
+    private Collection $forfait;
+
+    public function __construct()
+    {
+        $this->forfait = new ArrayCollection();
+    }
+
+  
 
     public function getId(): ?int
     {
@@ -67,4 +79,30 @@ class Cv
     {
         return $this->cv_candidat;            //peut etre changé firts_name, name, email = string, non null
     }
+
+    /**
+     * @return Collection<int, Forfait>
+     */
+    public function getForfait(): Collection
+    {
+        return $this->forfait;
+    }
+
+    public function addForfait(Forfait $forfait): self
+    {
+        if (!$this->forfait->contains($forfait)) {
+            $this->forfait->add($forfait);
+        }
+
+        return $this;
+    }
+
+    public function removeForfait(Forfait $forfait): self
+    {
+        $this->forfait->removeElement($forfait);
+
+        return $this;
+    }
+
+
 }
