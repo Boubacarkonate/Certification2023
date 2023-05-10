@@ -27,6 +27,9 @@ class Cv
     #[ORM\ManyToMany(targetEntity: Forfait::class, inversedBy: 'cvs')]
     private Collection $forfait;
 
+    #[ORM\Column]
+    private ?\DateTimeImmutable $createdAt = null;
+
     public function __construct()
     {
         $this->forfait = new ArrayCollection();
@@ -100,6 +103,18 @@ class Cv
     public function removeForfait(Forfait $forfait): self
     {
         $this->forfait->removeElement($forfait);
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

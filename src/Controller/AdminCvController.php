@@ -31,6 +31,8 @@ class AdminCvController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $cv ->setCreatedAt(new \DateTimeImmutable());             //creation nouvelle date ety heure
+
             $cvChampForm = $form->get('cv_candidat')->getData();
 
             if ($cvChampForm) {
