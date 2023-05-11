@@ -48,7 +48,7 @@ class CartController extends AbstractController
 
         /// 1°) on récupère le panier actuel///
          $panier = $session->get("panier", []);   //soit le $panier récupère sa valeur, soit 1 tableau vide s'il n'existe pas
-        $id = $forfait->getId();                    //j'enferme mon forfait qui sera récupéré(selectionné à l'achat) dans une variable que j'appelle
+        $id = $forfait->getId();                    //je récupère l'id de mon forfait que j'ennferme dans une variable
 
         // $panier=[           le tableau devra contenir [le $id => sa quantité/valeur ]
         //     '1' => 1,           
@@ -72,6 +72,75 @@ class CartController extends AbstractController
             
         // ]);
     }
+
+     #[Route('/remove/{id}', name: 'app_cart_remove')]
+     public function remove(Forfait $forfait, SessionInterface $session): Response
+    {
+        /// 1°) on récupère le panier actuel///
+         $panier = $session->get("panier", []);   //soit le $panier récupère sa valeur, soit 1 tableau vide s'il n'existe pas
+        $id = $forfait->getId();                    //je récupère l'id de mon forfait que j'ennferme dans une variable
+
+
+
+        if (!empty($panier[$id]) ) {            //si $panier n'est pas vide alors
+           
+            if ($panier[$id] > 1) {             // s'il y a au moins 1 article alors 
+               
+                $panier[$id]--;                 //retire de 1 en 1 (décrementation)
+            
+            } else {
+          
+                unset($panier[$id]);            //sinon
+            }
+        }
+         
+
+         /// 2°) on sauvegarde dans la session la quantité/valeur du $id ///
+        $session->set("panier", $panier);
+
+
+            return $this->redirectToRoute('app_cart_index');
+        // return $this->render('cart/index.html.twig', [
+            
+        // ]);
+    }
+
+    #[Route('/delete/{id}', name: 'app_cart_delete')]
+     public function delete(Forfait $forfait, SessionInterface $session): Response
+    {
+        /// 1°) on récupère le panier actuel///
+         $panier = $session->get("panier", []);   //soit le $panier récupère sa valeur, soit 1 tableau vide s'il n'existe pas
+        $id = $forfait->getId();                    //je récupère l'id de mon forfait que j'ennferme dans une variable
+
+
+
+        if (!empty($panier[$id]) ) {            //si $panier n'est pas vide alors
+           
+            unset($panier[$id]);                //sinon
+        }
+         
+
+         /// 2°) on sauvegarde dans la session la quantité/valeur du $id ///
+        $session->set("panier", $panier);
+
+
+            return $this->redirectToRoute('app_cart_index');
+        // return $this->render('cart/index.html.twig', [
+            
+        // ]);
+    }
+
+    #[Route('/delete', name: 'app_cart_delete_all')]
+     public function deleteAll(SessionInterface $session): Response
+    {
+       $session->remove("panier");
+
+        return $this->redirectToRoute('app_cart_index');
+        // return $this->render('cart/index.html.twig', [
+            
+        // ]);
+    }
+
 
 
 }
