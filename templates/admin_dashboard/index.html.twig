@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminDashboardController!{% endblock %}
+
+{% block body %}
+
+<ul>
+    <li><a href="{{ path('app_admin_forfait_index') }}">adminForfait</a></li>
+    <li><a href="{{ path('app_admin_cv_index') }}">adminCv</a></li>
+    <li><a href="{{ path('app_admin_user_index') }}">adminUser</a></li>
+    <li><a href="{{ path('app_admin_categorie_index') }}">adminCategorie</a></li>
+    <li><a href="{{ path('app_cvtheque') }}">cvtheque</a></li>
+    <li><a href="{{ path('app_cart_index') }}">panier</a></li>
+   
+ 
+</ul>
+
+{% endblock %}

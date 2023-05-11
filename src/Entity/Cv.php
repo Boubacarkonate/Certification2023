@@ -78,10 +78,7 @@ class Cv
         return $this;
     }
 
-    public function __toString()
-    {
-        return $this->cv_candidat;            //peut etre changé firts_name, name, email = string, non null
-    }
+   
 
     /**
      * @return Collection<int, Forfait>
@@ -117,6 +114,11 @@ class Cv
         $this->createdAt = $createdAt;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->cv_candidat;            //peut etre changé firts_name, name, email = string, non null
     }
 
 

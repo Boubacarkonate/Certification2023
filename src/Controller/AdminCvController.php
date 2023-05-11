@@ -24,14 +24,15 @@ class AdminCvController extends AbstractController
 
     #[Route('/new', name: 'app_admin_cv_new', methods: ['GET', 'POST'])]
     public function new(FileUploader $fileUploader, Request $request, CvRepository $cvRepository): Response
-    {
+    {   
+        $moncv = $this->getUser();
         $cv = new Cv();
         $form = $this->createForm(CvType::class, $cv);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $cv ->setCreatedAt(new \DateTimeImmutable());             //creation nouvelle date ety heure
+            $cv ->setCreatedAt(new \DateTimeImmutable());             //creation nouvelle date et heure
 
             $cvChampForm = $form->get('cv_candidat')->getData();
 
@@ -50,6 +51,7 @@ class AdminCvController extends AbstractController
 
         return $this->renderForm('admin_cv/new.html.twig', [
             'cv' => $cv,
+            'moncv' => $moncv,
             'form' => $form,
         ]);
     }

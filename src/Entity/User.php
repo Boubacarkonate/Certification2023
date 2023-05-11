@@ -231,11 +231,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    
-    public function __toString()
-    {
-        return "$this->Name $this->first_name";            //peut etre changé firts_name, name, email = string, non null
-    }
 
     public function getForfait(): ?Forfait
     {
@@ -271,6 +266,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return "$this->Name $this->first_name";            //peut etre changé firts_name, name, email = string, non null
     }
 
 
