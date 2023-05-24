@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CartController!{% endblock %}
+
+{% block body %}
+<h1>Mon panier</h1>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id_forfait</th>
+                <th>nom</th>
+                <th>prix</th>
+                <th>Total à payer</th>      
+                <th>Supprimer</th>                
+            </tr>
+        </thead>
+        <tbody>
+            {% for monpanier in panier %}
+            <tr>
+                <td>{{monpanier.forfait.id}}</td>
+                <td>{{monpanier.forfait.name}}</td>
+                <td>{{monpanier.forfait.price}} €</td>
+                 <td>
+                
+                 <a href="{{ path('app_cart_add', {'id': monpanier.forfait.id}) }}">
+                +
+                </a> 
+                {{monpanier.quantite}}
+                 <a href="{{ path('app_cart_removequantite', {'id': monpanier.forfait.id}) }}">            {#gere quantité#} 
+                -
+                </a>  
+                
+                </td> 
+                <td>{{monpanier.total}} € pour {{ monpanier.forfait.duration }} mois</td>
+                 <td>
+                                     <a href="{{ path('app_cart_remove', {'id': monpanier.forfait.id}) }}">
+                                     Supprimer</a>
+                    </td>
+           </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <h2>Montant Total :  {{ totalcomplet }}    € </h2>
+    <a href="{{ path('app_commandes_success')}}">
+    <h2>COMMANDEZ</h2>
+    </a>
+
+        <a href="{{ path('app_cart_clear') }}">
+        Vider le panier
+        </a>
+{% endblock %}

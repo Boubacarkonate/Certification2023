@@ -26,6 +26,9 @@ class Commandes
     #[ORM\ManyToOne(inversedBy: 'commandes')]
     private ?Facture $facture_id = null;
 
+    #[ORM\Column]
+    private ?int $quantity = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Commandes
     public function setFactureId(?Facture $facture_id): self
     {
         $this->facture_id = $facture_id;
+
+        return $this;
+    }
+
+    public function getQuantity(): ?int
+    {
+        return $this->quantity;
+    }
+
+    public function setQuantity(int $quantity): self
+    {
+        $this->quantity = $quantity;
 
         return $this;
     }

@@ -57,13 +57,13 @@ class CartService {
         // je boucle sur la cle et la valeur
         // du panier
         // clé de 7 sa valeur est la quantité
-         foreach ($panier as $key => $value  ){
-            $forfait_encours= $this->forfaitRepository->find($key);
+         foreach ($panier as $id => $quantity  ){
+            $forfait_encours= $this->forfaitRepository->find($id);
 
             $panier_complet[]=[
                 'forfait'=> $forfait_encours ,
-                'quantite'=>$value,
-                'total'=>($forfait_encours->getPrice()*$value),
+                'quantite'=>$quantity,
+                'total'=>($forfait_encours->getPrice()*$quantity),
                 ];
                 // accumule la variable total avec chacun des prix
              

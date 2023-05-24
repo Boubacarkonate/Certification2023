@@ -99,6 +99,9 @@ class ProfileController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $user->setUpdatedAt(new \DateTimeImmutable());
+
             $userRepository->save($user, true);
 
             return $this->redirectToRoute('app_profile_index', [], Response::HTTP_SEE_OTHER);
