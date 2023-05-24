@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -51,12 +53,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(inversedBy: 'user')]
     private ?Forfait $forfait = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'datetime_immutable', options: ['default' => 'CURRENT_TIMESTAMP'])]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Facture::class, orphanRemoval: true)]
+    private Collection $factures;
+
+    public function __construct()
+    {
+        $this->factures = new ArrayCollection();
+    }
 
    
     public function getId(): ?int
@@ -272,6 +281,37 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return "$this->Name $this->first_name";            //peut etre changé firts_name, name, email = string, non null
     }
+
+    /**
+     * @return Collection<int, Facture>
+     */
+    public function getFactures(): Collection
+    {
+        return $this->factures;
+    }
+
+    public function addFacture(Facture $facture): self
+    {
+        if (!$this->factures->contains($facture)) {
+            $this->factures->add($facture);
+            $facture->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFacture(Facture $facture): self
+    {
+        if ($this->factures->removeElement($facture)) {
+            // set the owning side to null (unless already changed)
+            if ($facture->getUserId() === $this) {
+                $facture->setUserId(null);
+            }
+        }
+
+        return $this;
+    }
+
 
 
   

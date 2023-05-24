@@ -1,18 +1,21 @@
 <?php
+
 namespace App\Service;
 
-use App\Repository\ProduitRepository;
+use App\Repository\ForfaitRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class CartService {
     private $session;
-    private $produitRepository;
+    private $forfaitRepository;
 
 
-    public function __construct(RequestStack $requestStack, ProduitRepository $produitRepository)
+    public function __construct(
+        RequestStack $requestStack,
+        ForfaitRepository $forfaitRepository)
     {
         $this->session=$requestStack;
-        $this->produitRepository=$produitRepository;
+        $this->forfaitRepository=$forfaitRepository;
     }
 
     public function add($id){
@@ -47,7 +50,7 @@ class CartService {
         // dd($session->getSession()->get("panier"));
         $panier=$this->session->getSession()->get("panier");
 
-        // créé un panier contenant les infos sur le produits
+        // créé un panier contenant les infos sur le forfaits
 
         $panier_complet=[];
 
@@ -55,12 +58,12 @@ class CartService {
         // du panier
         // clé de 7 sa valeur est la quantité
          foreach ($panier as $key => $value  ){
-            $produit_encours= $this->produitRepository->find($key);
+            $forfait_encours= $this->forfaitRepository->find($key);
 
             $panier_complet[]=[
-                'produit'=> $produit_encours ,
+                'forfait'=> $forfait_encours ,
                 'quantite'=>$value,
-                'total'=>($produit_encours->getPrix()*$value),
+                'total'=>($forfait_encours->getPrice()*$value),
                 ];
                 // accumule la variable total avec chacun des prix
              
@@ -76,8 +79,8 @@ class CartService {
         $panier=$this->session->getSession()->get("panier");
         $total=0;
         foreach ($panier as $key => $value  ){
-            // total accumule précedent + prix du produit en cours * quantité
-            $total=  $total + ($this->produitRepository->find($key)->getPrix()*$value);
+            // total accumule précedent + prix du forfait en cours * quantité
+            $total=  $total + ($this->forfaitRepository->find($key)->getPrice()*$value);
   
                 
                 // accumule la variable total avec chacun des prix
@@ -120,8 +123,4 @@ class CartService {
 
     }
 
-
-
 }
-
-?>

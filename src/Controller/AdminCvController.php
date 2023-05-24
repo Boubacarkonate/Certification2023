@@ -25,8 +25,15 @@ class AdminCvController extends AbstractController
     #[Route('/new', name: 'app_admin_cv_new', methods: ['GET', 'POST'])]
     public function new(FileUploader $fileUploader, Request $request, CvRepository $cvRepository): Response
     {   
-        $moncv = $this->getUser();
+        $user = $this->getUser();
         $cv = new Cv();
+
+        if($user){
+            
+            $cv->setUser($user);                    //affichera l'user correspondant
+          }
+
+        
         $form = $this->createForm(CvType::class, $cv);
         $form->handleRequest($request);
 
@@ -51,7 +58,6 @@ class AdminCvController extends AbstractController
 
         return $this->renderForm('admin_cv/new.html.twig', [
             'cv' => $cv,
-            'moncv' => $moncv,
             'form' => $form,
         ]);
     }

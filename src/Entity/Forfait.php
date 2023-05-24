@@ -34,10 +34,14 @@ class Forfait
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
+    #[ORM\OneToMany(mappedBy: 'forfait_id', targetEntity: Commandes::class, orphanRemoval: true)]
+    private Collection $commandes;
+
     public function __construct()
     {
         $this->user = new ArrayCollection();
         $this->cvs = new ArrayCollection();
+        $this->commandes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -146,6 +150,36 @@ class Forfait
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commandes>
+     */
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
+
+    public function addCommande(Commandes $commande): self
+    {
+        if (!$this->commandes->contains($commande)) {
+            $this->commandes->add($commande);
+            $commande->setForfaitId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(Commandes $commande): self
+    {
+        if ($this->commandes->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getForfaitId() === $this) {
+                $commande->setForfaitId(null);
+            }
+        }
 
         return $this;
     }

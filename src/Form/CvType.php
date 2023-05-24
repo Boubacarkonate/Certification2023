@@ -38,7 +38,7 @@ class CvType extends AbstractType
                     ])
                 ],
             ])
-            ->add('user')
+            ->add('user')           //voir avec bootstrap pour desactiver champs d'option 
             ->add('categorie')
         ;
     }
