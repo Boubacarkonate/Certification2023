@@ -63,7 +63,18 @@ class CommandesController extends AbstractController
             $commandes=new Commandes();
           
             $commandes ->setCreatedAt(new \DateTimeImmutable());
-            $commandes -> setExpireAt(new \DateTimeImmutable('+3 month'));             //voir comment créer 3 date de fin d'abonnement
+
+            if ($key == 1) {
+                $commandes -> setExpireAt(new \DateTimeImmutable('+1 month')); 
+            }
+            elseif ($key == 2) {
+                $commandes -> setExpireAt(new \DateTimeImmutable('+6 month'));
+            }
+            elseif ($key == 3) {
+                $commandes -> setExpireAt(new \DateTimeImmutable('+12 month'));
+            }
+            
+                        //voir comment créer 3 date de fin d'abonnement
             // clone $commandes->setExpireAt(new \DateTimeImmutable('+6 month'));
             // clone $commandes->setExpireAt(new \DateTimeImmutable('+12 month'));
             $commandes->setQuantity($value);
