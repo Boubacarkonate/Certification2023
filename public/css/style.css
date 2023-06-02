@@ -69,6 +69,10 @@ header a {
 main {
     background: radial-gradient(ellipse, #2f56da, white);
 }
+/* main {
+  background: rgb(255,255,255);
+background: linear-gradient(0deg, rgba(255,255,255,1) 25%, rgba(47,86,218,0.6139705882352942) 100%);
+} */
 
 
 /* .conteneur {

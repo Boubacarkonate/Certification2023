@@ -5,7 +5,31 @@
 {% block body %}
     <h1>Create new Cv</h1>
 
-    {{ include('admin_cv/_form.html.twig') }}
+     {{ form_start(cvForm) }}
+
+        <br>
+                    <br>
+
+                    {{ form_label(cvForm.cv_candidat) }}       
+                    <br>
+                    {{ form_widget(cvForm.cv_candidat) }}        
+        <br>
+                    <br>
+
+                    {{ form_label(cvForm.user) }}       
+                    <br>
+                    {{ form_widget(cvForm.user, {"disabled": true}) }}        
+        <br>
+                    <br>
+
+                    {{ form_label(cvForm.categorie) }}       
+                    <br>
+                    {{ form_widget(cvForm.categorie) }}        
+        <br>
+                    <br>
+
+                   {{ form_end(cvForm) }}
+
 
     <a href="{{ path('app_admin_cv_index') }}">back to list</a>
 {% endblock %}

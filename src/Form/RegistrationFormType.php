@@ -23,13 +23,16 @@ class RegistrationFormType extends AbstractType
         $builder
            
             ->add('roles', ChoiceType::class, [
-               'label' => "Choisissez votre espace :",         //  ne fonctionne pas
+                 'label' => "Choisissez votre espace :", 
+                'attr' => [
+                    'class'=> 'form-control-lg'],
+                      //  ne fonctionne pas
                 'choices' => [
-                    'Recruteur' => 'ROLE_USER_RECRUTEUR',
-                    'Candidat' => 'ROLE_USER_CANDIDAT',
-                    'Admin' => 'ROLE_ADMIN'
+                    'Recruteur' => "ROLE_USER_RECRUTEUR",
+                    'Candidat' => "ROLE_USER_CANDIDAT",
+                    'Admin' => "ROLE_ADMIN"
                 ],
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => true,
                 'label' => 'Rôle'
 
@@ -76,6 +79,7 @@ class RegistrationFormType extends AbstractType
                 // ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
+                'label' => 'J\'accepte que mes informations soient stockées dans la base de données de Mon Blog pour la gestion des commentaires. J\'ai bien noté qu\'en aucun cas ces données ne seront cédées à des tiers.',
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([

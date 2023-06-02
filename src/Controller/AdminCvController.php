@@ -58,7 +58,7 @@ class AdminCvController extends AbstractController
 
         return $this->renderForm('admin_cv/new.html.twig', [
             'cv' => $cv,
-            'form' => $form,
+            'cvForm' => $form,
         ]);
     }
 

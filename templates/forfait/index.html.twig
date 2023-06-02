@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ForfaitController!{% endblock %}
+
+{% block body %}
+
+ <h1>Forfait index</h1>
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for forfait in forfaits %}
+    <div class="col">
+        <div class="card text-center mb-3" style="width: 18rem;">
+            <div class="card-body">{{ forfait.id }}
+                <h5 class="card-title">{{ forfait.name }}</h5>
+                    <p class="card-text"> <i class="fa-solid fa-check"></i> {{ forfait.description }}</p>
+                    <p class="card-text"> <i class="fa-solid fa-check"></i> accès à la cvthèque :{{ forfait.duration }} mois</p>
+                    <p class="card-text">{{ forfait.price }} €</p>
+                <a href="{{ path('app_cart_add', {id: forfait.id}) }} "class="btn btn-primary">VALIDER le panier</a>
+            </div>
+        </div>
+        <a href="{{ path('app_forfait_show', {'id': forfait.id}) }}">show</a>
+    </div>
+
+{% endfor %}
+</div>
+
+{% endblock %}

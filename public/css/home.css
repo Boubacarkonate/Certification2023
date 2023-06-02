@@ -79,6 +79,7 @@
         opacity: 1;
         transition:4s ;
     } */
+    
     #bloc{
         display: flex;
         flex-direction: column;

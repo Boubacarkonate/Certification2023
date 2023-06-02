@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Cv;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -38,7 +40,10 @@ class CvType extends AbstractType
                     ])
                 ],
             ])
-            ->add('user')           //voir avec bootstrap pour desactiver champs d'option 
+            // ->add('user', EntityType::class,[
+            //     'class' => User::class,
+            //     'class' => 'disabled'
+            ->add('user')           //voir avec bootstrap pour desactiver champs d'option ou rendre champ invisible
             ->add('categorie')
         ;
     }
@@ -47,6 +52,7 @@ class CvType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Cv::class,
+            'hidden'
         ]);
     }
 }
