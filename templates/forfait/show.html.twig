@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+    <h1>Forfait</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nom du forfait</th>
+                <td>{{ forfait.name }}</td>
+            </tr>
+            <tr>
+                <th>Ce choix de forfait peut vous permettre de : </th>
+                <td>{{ forfait.description }}</td>
+            </tr>
+            <tr>
+                <th>Vous accédez à notre Cvthèque en illimité durant : </th>
+                <td>{{ forfait.duration }} mois</td>
+            </tr>
+            <tr>
+                <th>Le montant de l'abonnement est au montant de :</th>
+                <td>{{ forfait.price }} € pour {{ forfait.duration }} mois</td>
+            </tr>
+           
+        </tbody>
+    </table>
+ <tr>
+               <a href="{{ path('app_cart_add', {id: forfait.id}) }} "class="btn btn-primary">VALIDER le panier</a>
+            </tr>
+
+ <div>
+    <a href="{{ path('app_forfait') }}">retour à la liste des forfaits</a>
+</div>
+
+{% endblock %}

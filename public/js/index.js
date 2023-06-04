@@ -98,3 +98,6 @@ btnMenu.addEventListener('click', () => {
 //     btnFlottant.forEach((e) => {
 //         e.classList.add('sous-bouton');    
 //     })
+
+
+

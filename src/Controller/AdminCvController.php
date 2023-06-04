@@ -4,13 +4,15 @@ namespace App\Controller;
 
 use App\Entity\Cv;
 use App\Form\CvType;
-use App\Repository\CvRepository;
 use App\Service\FileUploader;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\CvRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+#[IsGranted("ROLE_ADMIN")]
 #[Route('/admin/cv')]
 class AdminCvController extends AbstractController
 {

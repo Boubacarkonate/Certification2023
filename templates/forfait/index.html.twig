@@ -16,10 +16,10 @@
                     <p class="card-text"> <i class="fa-solid fa-check"></i> {{ forfait.description }}</p>
                     <p class="card-text"> <i class="fa-solid fa-check"></i> accès à la cvthèque :{{ forfait.duration }} mois</p>
                     <p class="card-text">{{ forfait.price }} €</p>
-                <a href="{{ path('app_cart_add', {id: forfait.id}) }} "class="btn btn-primary">VALIDER le panier</a>
+        <a href="{{ path('app_forfait_show', {'id': forfait.id}) }} "class="btn btn-primary">show</a>
+                <a href="{{ path('app_cart_add', {id: forfait.id}) }} "class="btn btn-outline-primary">VALIDER le panier</a>
             </div>
         </div>
-        <a href="{{ path('app_forfait_show', {'id': forfait.id}) }}">show</a>
     </div>
 
 {% endfor %}
