@@ -14,9 +14,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CvthequeController extends AbstractController
 {
-    #[Route('/cvtheque/{id}', name: 'app_cvtheque')]
+    #[Route('/cvtheque', name: 'app_cvtheque')]
     public function index(CvRepository $cvRepository, CategorieRepository $categorieRepository, CommandesRepository $commandesRepository, $id): Response
     {   
+        $user = $this->getUser();
+        if ($user) {
+            # code...
+        }
         $finAbonnement = new \DateTimeImmutable();              // création d'une variable $finAbonnement contenant la date actuelle
        
        $commandes_encours = $commandesRepository->find($id) ;   //id de la commande affiché enfermé dans la variable $commandes_encours

@@ -10,6 +10,8 @@ use App\Form\UserProfileType;
 use App\Service\FileUploader;
 use App\Repository\CvRepository;
 use App\Repository\UserRepository;
+use App\Repository\CategorieRepository;
+use App\Repository\CommandesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -64,6 +66,34 @@ class ProfileController extends AbstractController
             'form' => $form,
         ]);
     }
+
+    #[Route('/cvtheque/{id}', name: 'app_cvtheque')]
+    public function cvtheque(CvRepository $cvRepository, CategorieRepository $categorieRepository, CommandesRepository $commandesRepository, $id): Response
+    {   
+        $user = $this->getUser();
+        if ($user) {
+            
+       
+        $finAbonnement = new \DateTimeImmutable();              // création d'une variable $finAbonnement contenant la date actuelle
+       
+       $commandes_encours = $commandesRepository->find($id) ;   //id de la commande affiché enfermé dans la variable $commandes_encours
+    // dd ($commandes_encours->getExpireAt() )  ;                   // récupération du champ ExpireAt avec le get 
+
+
+        if ($commandes_encours->getExpireAt()  > $finAbonnement) {          //si commandes_encours est supérieur à $finAbonnement(date actuelle) alors retourne
+            
+        // return $this->render('cvtheque/index.html.twig', [
+        //     'cvs' => $cvRepository->findAll(),
+        // ]);
+        return $this->render('categorie/index.html.twig', [
+            'categories' => $categorieRepository->findAll(),
+        ]);
+
+    } else {
+        return $this->redirectToRoute('app_home');
+    }
+    } }
+
 
     // #[Route('/new', name: 'app_profile_new', methods: ['GET', 'POST'])]
     // public function new(Request $request, UserRepository $userRepository): Response

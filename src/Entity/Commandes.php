@@ -29,6 +29,11 @@ class Commandes
     #[ORM\Column]
     private ?int $quantity = null;
 
+    #[ORM\ManyToOne(inversedBy: 'commandes')]
+    private ?User $users = null;
+
+    
+
     public function getId(): ?int
     {
         return $this->id;
@@ -93,4 +98,18 @@ class Commandes
 
         return $this;
     }
+
+    public function getUsers(): ?User
+    {
+        return $this->users;
+    }
+
+    public function setUsers(?User $users): self
+    {
+        $this->users = $users;
+
+        return $this;
+    }
+
+   
 }
